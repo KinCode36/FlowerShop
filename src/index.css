@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400&display=swap");
+
+@theme {
+    --font-cormorant: "Cormorant Garamond", serif;
+     --font-dm: "DM Sans", sans-serif;
+}
+@import "tailwindcss";
+/* Responsive admin layout */
+html, body, #root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.mobile-menu-button,
+.mobile-sidebar-close {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .admin-sidebar {
+    transform: translateX(-100%);
+    box-shadow: 12px 0 30px rgba(0, 0, 0, 0.12);
+  }
+
+  .admin-sidebar.translate-x-0 {
+    transform: translateX(0);
+  }
+
+  .admin-navbar {
+    left: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .mobile-menu-button {
+    display: flex;
+    flex-shrink: 0;
+  }
+
+  .mobile-sidebar-close {
+    display: block;
+  }
+
+  main {
+    margin-left: 0 !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .admin-navbar {
+    height: 56px;
+  }
+
+  main {
+    padding-top: 72px !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .page-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+
+  .page-title {
+    font-size: 1.75rem !important;
+    line-height: 1.15;
+  }
+
+  .page-actions {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .page-actions > * {
+    flex: 1 1 auto;
+  }
+
+  .page-actions button,
+  .page-actions a,
+  .page-actions > div {
+    min-height: 40px;
+  }
+
+  /* Stack two-column form fields on phones. */
+  form .flex.justify-between.items-end.gap-2 {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  form .flex.justify-between.items-end.gap-2 > div {
+    width: 100%;
+  }
+
+  /* Keep cards and panels inside the viewport. */
+  .rounded-2xl,
+  .rounded-xl {
+    max-width: 100%;
+  }
+
+  /* Make the edit drawer usable on small screens. */
+  .fixed.inset-0 .max-w-md {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  main {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+}
