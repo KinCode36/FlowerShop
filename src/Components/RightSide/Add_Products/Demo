@@ -1,0 +1,138 @@
+import React, { useState } from "react";
+
+const GalleryForm = () => {
+  const [category, setCategory] = useState("");
+  const [images, setImages] = useState([]);
+  const [previews, setPreviews] = useState([]);
+
+  const handleImageChange = (e) => {
+    const files = Array.from(e.target.files);
+
+    if (files.length === 0) return;
+
+    setImages(files);
+
+    const previewUrls = files.map((file) =>
+      URL.createObjectURL(file)
+    );
+
+    setPreviews(previewUrls);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!category) {
+      alert("Please select a category");
+      return;
+    }
+
+    if (images.length === 0) {
+      alert("Please select at least one image");
+      return;
+    }
+
+    const existingImages =
+      JSON.parse(localStorage.getItem("galleryImages")) || [];
+
+    const imagePromises = images.map((file) => {
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+
+        reader.onloadend = () => {
+          resolve({
+            id: Date.now() + Math.random(),
+            name: file.name,
+            category: category,
+            image: reader.result,
+          });
+        };
+
+        reader.readAsDataURL(file);
+      });
+    });
+
+    Promise.all(imagePromises).then((newImages) => {
+      const updatedImages = [
+        ...existingImages,
+        ...newImages,
+      ];
+
+      localStorage.setItem(
+        "galleryImages",
+        JSON.stringify(updatedImages)
+      );
+
+      alert("Images uploaded successfully");
+
+      setCategory("");
+      setImages([]);
+      setPreviews([]);
+
+    
+    });
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="mt-6">
+
+      {/* Category */}
+      <label className="block mb-2 font-semibold">
+        Gallery Category{" "}
+        <span className="text-red-500">*</span>
+      </label>
+
+      <select
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+        className="w-full border border-gray-300 rounded-lg p-3 mb-5"
+      >
+        <option value="">Select Category</option>
+        <option value="Wedding">Wedding</option>
+        <option value="Birthday Party">Birthday Party</option>
+        <option value="Engagement">Engagement</option>
+        <option value="Anniversary">Anniversary</option>
+        <option value="Baby Shower">Baby Shower</option>
+        <option value="Corporate Event">Corporate Event</option>
+      </select>
+
+      {/* Images */}
+      <label className="block mb-2 font-semibold">
+        Upload Images{" "}
+        <span className="text-red-500">*</span>
+      </label>
+
+      <input
+        type="file"
+        accept="image/*"
+        multiple
+        onChange={handleImageChange}
+        className="w-full border border-gray-300 rounded-lg p-3"
+      />
+
+      {/* Preview */}
+      {previews.length > 0 && (
+        <div className="grid grid-cols-3 gap-3 mt-5">
+          {previews.map((preview, index) => (
+            <img
+              key={index}
+              src={preview}
+              alt={`Preview ${index + 1}`}
+              className="w-full h-28 object-cover rounded-lg"
+            />
+          ))}
+        </div>
+      )}
+
+      <button
+        type="submit"
+        className="w-full active:scale-75 transition-all duration-150 mt-5 bg-blue-600 text-white py-3 rounded-lg font-semibold"
+      >
+        Upload Images
+      </button>
+
+    </form>
+  );
+};
+
+export default GalleryForm;
