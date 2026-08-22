@@ -85,7 +85,7 @@ const initialOrders = [
 
 const Admin = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  
+
   const [orders, setOrders] = useState(() => {
     const savedOrders = localStorage.getItem("orders");
 

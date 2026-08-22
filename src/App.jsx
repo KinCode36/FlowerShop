@@ -9,6 +9,7 @@ import Analytics from './Components/RightSide/Analytics/Analytics'
 import Add_Products from './Components/RightSide/Add_Products/Add_Products'
 import Account_Settings from './Components/RightSide/Account_Settings/Account_Settings'
 import UserInformation from './UserInformation/UserInformation'
+import Login from './Components/Login/Login'
 
 
 function App() {
@@ -40,7 +41,7 @@ function App() {
 
   return (
     <div>
-      <Routes>
+      {/* <Routes>
         <Route path="/" element={<Admin />}>
           <Route index element={<Dashboard />} />
           <Route path="orders" element={<Orders />} />
@@ -57,7 +58,8 @@ function App() {
           <Route path="settings" element={<Account_Settings />} />
           <Route path="userinformation" element={<UserInformation />} />
         </Route>
-      </Routes>
+      </Routes> */}
+      <Login/>
       {/* <Gallary/> */}
     </div>
   )
