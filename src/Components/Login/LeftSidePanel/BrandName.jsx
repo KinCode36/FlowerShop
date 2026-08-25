@@ -2,7 +2,7 @@ import React from 'react'
 
 const BrandName = () => {
   return (
-    <section className='w-[42%] bg-[#292927] p-10 '>
+    <section className='relative flex w-full flex-col overflow-hidden bg-[#292927] px-5 py-6 text-white sm:px-7 sm:py-7 lg:min-h-screen lg:w-[40%] lg:px-10 lg:py-10 xl:w-[42%] xl:px-12'>
       <div>
         <h1 className='text-[#e6ac8f] font-serif font-medium italic text-2xl sm:text-3xl'>Nitin</h1>
         <p className='uppercase mt-1 text-[12px] text-[#999994] tracking-[2px] '>Admin Portal</p>

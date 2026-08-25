@@ -41,7 +41,7 @@ function App() {
 
   return (
     <div>
-      {/* <Routes>
+      <Routes>
         <Route path="/" element={<Admin />}>
           <Route index element={<Dashboard />} />
           <Route path="orders" element={<Orders />} />
@@ -58,8 +58,8 @@ function App() {
           <Route path="settings" element={<Account_Settings />} />
           <Route path="userinformation" element={<UserInformation />} />
         </Route>
-      </Routes> */}
-      <Login/>
+      </Routes>
+      {/* <Login /> */}
       {/* <Gallary/> */}
     </div>
   )

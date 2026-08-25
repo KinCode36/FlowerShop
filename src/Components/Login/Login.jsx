@@ -3,8 +3,9 @@ import BrandName from './LeftSidePanel/BrandName'
 
 const Login = () => {
   return (
-    <div>
+    <div className=''>
       <BrandName/>
+      
     </div>
   )
 }
