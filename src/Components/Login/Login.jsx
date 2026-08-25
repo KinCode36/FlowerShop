@@ -1,10 +1,11 @@
 import React from 'react'
-import BrandName from './LeftSidePanel/BrandName'
+import BrandName from './LeftSidePanel/BrandName/BrandName'
+import LeftSidePanel from './LeftSidePanel/LeftSidePanel'
 
 const Login = () => {
   return (
     <div className=''>
-      <BrandName/>
+     <LeftSidePanel/>
       
     </div>
   )
