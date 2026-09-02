@@ -1,10 +1,17 @@
 import React from 'react'
 
-const WelcomeText = () => {
+const WelcomeText = ({ type = "login" }) => {
+    const isLogin = type === "login";
     return (
         <>
-            <h1 className='font-serif font-normal text-white text-3xl '>Welcome Back!</h1>
-            <p className='font-normal text-[rgb(184,184,179)] text-sm leading-6'>Sign in to continue managing your dashboard.</p>
+            <h1 className='font-serif font-normal text-white text-3xl '>
+                {isLogin ? "Welcome Back!" : "Create Account"}
+            </h1>
+            <p className='font-normal text-[rgb(184,184,179)] text-sm leading-6'>
+                {isLogin
+                    ? "Sign in to continue managing your dashboard."
+                    : "Join and start managing your dashboard efficiently."}
+            </p>
         </>
     )
 }

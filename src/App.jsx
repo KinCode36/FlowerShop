@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Admin from './Admin/Admin'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Dashboard from './Components/RightSide/Dashboard/Dashboard'
 import Products from './Components/RightSide/Products/Products'
 import Orders from './Components/RightSide/Orders/Orders'
@@ -10,6 +10,7 @@ import Add_Products from './Components/RightSide/Add_Products/Add_Products'
 import Account_Settings from './Components/RightSide/Account_Settings/Account_Settings'
 import UserInformation from './UserInformation/UserInformation'
 import Login from './Components/Login/Login'
+import CreateAccount from './Components/Login/CreateAccount/CreateAccount'
 
 
 function App() {
@@ -41,8 +42,8 @@ function App() {
 
   return (
     <div>
-      {/* <Routes>
-        <Route path="/" element={<Admin />}>
+      <Routes>
+        {/* <Route path="/" element={<Admin />}>
           <Route index element={<Dashboard />} />
           <Route path="orders" element={<Orders />} />
           <Route
@@ -57,9 +58,19 @@ function App() {
           <Route path="add_Products" element={<Add_Products setProducts={setProducts} />} />
           <Route path="settings" element={<Account_Settings />} />
           <Route path="userinformation" element={<UserInformation />} />
-        </Route>
-      </Routes> */}
-      <Login />
+        </Route> */}
+        <Route path="/login" element={<Login />} />
+
+        <Route
+          path="/create-account"
+          element={<CreateAccount />}
+        />
+
+        <Route
+          path="/"
+          element={<Navigate to="/login" replace />}
+        />
+      </Routes>
       {/* <Gallary/> */}
     </div>
   )

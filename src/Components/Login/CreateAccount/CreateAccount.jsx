@@ -4,7 +4,7 @@ import LeftSidePanel from '../LeftSidePanel/LeftSidePanel'
 const CreateAccount = () => {
   return (
     <div>
-    <LeftSidePanel/>
+    <LeftSidePanel type="signup" />
     </div>
   )
 }
