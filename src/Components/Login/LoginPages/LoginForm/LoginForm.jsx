@@ -1,17 +1,28 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import Remember from './Remember/Remember'
 import LoginButton from '../LoginButton/LoginButton'
 import ForgotButton from './ForgotButton/ForgotButton'
+import { findUser, saveLoggedInUser } from '../../../../utils/localStrage'
 const LoginForm = () => {
-
+  const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setpassword] = useState('')
+
   const handleSubmit = (e) => {
-    e.preventDefault();
-    setEmail('')
-    setpassword('')
+    e.preventDefault()
+
+    const user = findUser(email, password)
+
+    if (!user) {
+      alert("Invalid email or password")
+      return
+    }
+
+    saveLoggedInUser(user)
+
+    navigate("/")
   }
 
   return (
