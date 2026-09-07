@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Header from './Header'
 
 const EditProduct = ({ product, onClose, onSave }) => {
 
@@ -52,15 +53,7 @@ const EditProduct = ({ product, onClose, onSave }) => {
                 {/* Header */}
                 <div className="flex items-center justify-between border-b border-[#E0DDD6] px-6 py-5">
 
-                    <div>
-                        <h2 className="text-xl font-bold text-[#171717]">
-                            Edit Product
-                        </h2>
-
-                        <p className="mt-1 text-sm text-[#777770]">
-                            Update product information
-                        </p>
-                    </div>
+                    <Header />
 
                     <button
                         type="button"

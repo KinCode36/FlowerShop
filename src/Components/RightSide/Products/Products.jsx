@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import RightTop from '../RightTop'
 import ProductsList from './ProductsList/ProductList'
-import EditProduct from './EditProduct'
+import EditProduct from './EditProduct/EditProduct'
+
 
 const Products = ({ products, deleteProduct, updateProduct }) => {
 
