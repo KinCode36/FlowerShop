@@ -1,22 +1,14 @@
-const experss = require('express')
 
-const app = experss()
+const express = require("express");
+const cors = require("cors");
 
-app.use(experss.json())
+const app = express();
 
-var notes;
-app.post('/post', (req, res) => {
-  notes = req.body
-  res.status(201).json({
-    message: "Printed",
-    notes: notes
-  })
-})
+app.use(cors());
+app.use(express.json());
 
+const productRoutes = require("../routes/product.routes");
 
-app.get('/get', (req, res) => {
-  res.send(notes);
+app.use("/api/products", productRoutes);
 
-})
-
-module.exports = app
+module.exports = app;
